@@ -1,4 +1,4 @@
-package com.litografia.artes.planchas.clientsservice;
+package com.litografiaartesplanchas.clientservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

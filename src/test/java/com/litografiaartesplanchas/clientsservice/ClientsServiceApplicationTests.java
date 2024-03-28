@@ -1,4 +1,4 @@
-package com.litografia.artes.planchas.clientsservice;
+package com.litografiaartesplanchas.clientsservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
