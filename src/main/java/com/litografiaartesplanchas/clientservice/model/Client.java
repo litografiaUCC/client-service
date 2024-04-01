@@ -38,6 +38,9 @@ public class Client {
 	@Column(name = "foto", nullable = true , length = 255)
 	private String photo;
 	
+	@Column(name = "activo", columnDefinition = "BOOLEAN DEFAULT true")
+	private boolean isActive;
+	
 	@Column(name = "numero_documento", nullable = false , length = 45)
 	private String numberDocument;
 	
@@ -107,6 +110,14 @@ public class Client {
 
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+	
+	public boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(boolean isActive) {
+		this.isActive = isActive;
 	}
 
 	public String getNumberDocument() {

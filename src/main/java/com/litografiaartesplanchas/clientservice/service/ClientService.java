@@ -36,6 +36,34 @@ public class ClientService {
 		return repository.findById(id);
 	}
 	
+	/**
+	 * This Java function updates the status of a client by setting isActive to false in the repository
+	 * based on the provided ID.
+	 * 
+	 * @param id The `id` parameter is the unique identifier of the client whose status needs to be
+	 * updated.
+	 * @return The `patchStatusById` method returns an integer value. The possible return values are:
+	 * - 200: If the operation is successful and the client's status is updated.
+	 * - 404: If the client with the specified id is not found in the repository.
+	 * - 409: If the client is found but is already inactive.
+	 * - 400: If an exception occurs during the execution of the
+	 */
+	public int patchStatusById(long id){
+		try {
+			Optional<Client> optional = repository.findById(id);
+			if(optional.isEmpty()) return 404;
+			Client client = optional.get();
+			if(!client.getIsActive()) return 409;
+			client.setIsActive(false);
+			repository.save(client);
+			return 200;
+		}catch(Exception e) {
+			System.out.println(e);
+			return 400;
+		}
+	}
+	
+	
 	/*
 	public Client save(Client client) {
 		return repository.save(client);
