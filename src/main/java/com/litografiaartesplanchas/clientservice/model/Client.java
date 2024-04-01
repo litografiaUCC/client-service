@@ -15,7 +15,7 @@ public class Client {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cliente")
-	private long id;
+	private int id;
 	
 	@Column(name = "nombre", nullable = false , length = 100)
 	private String name;
@@ -45,11 +45,11 @@ public class Client {
 	@JoinColumn(name = "id_tipo_documento")
 	private TypeDocument typeDocument;
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
