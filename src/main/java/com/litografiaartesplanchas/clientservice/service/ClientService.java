@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.litografiaartesplanchas.clientservice.model.Client;
 import com.litografiaartesplanchas.clientservice.repository.IClientRepository;
+import com.litografiaartesplanchas.clientservice.utils.errors.ConflictException;
 
 @Service
 public class ClientService {
@@ -62,12 +63,23 @@ public class ClientService {
 			return 400;
 		}
 	}
+
+	/**
+	 * The `create` function in Java checks if a client with the same email or document number already
+	 * exists in the repository and throws a ConflictException if so, otherwise it saves the client.
+	 * 
+	 * @param client The `client` parameter is an object of type `Client` that represents a client entity.
+	 * It contains information such as the client's email, document number, and other details. This method
+	 * `create` is responsible for creating a new client in the system.
+	 */
+	public void create(Client client) throws ConflictException{
+		if(repository.existsByEmail(client.getEmail()) || repository.existsByNumberDocument(client.getNumberDocument())){
+			String fieldRegistered =  repository.existsByEmail(client.getEmail()) ? "email" : "document number";
+			throw new ConflictException("A client with this "+ fieldRegistered +" is already registered");
+		}
+		repository.save(client);
+	}
 	
-	
-	/*
-	public Client save(Client client) {
-		return repository.save(client);
-	}*/
 	
 	/* To do
 	public boolean updateById(Long id, Client updateDataClient) {
