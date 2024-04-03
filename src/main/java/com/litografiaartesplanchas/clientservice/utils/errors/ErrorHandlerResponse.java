@@ -5,6 +5,10 @@ import org.springframework.http.ResponseEntity;
 import com.litografiaartesplanchas.clientservice.utils.Response;
 import com.litografiaartesplanchas.clientservice.utils.ResponseBody;
 
+/**
+ * The `ErrorHandlerResponse` class provides a method `handleException` that returns appropriate
+ * responses based on the type of exception encountered.
+ */
 public class ErrorHandlerResponse{
 	
 	/**
