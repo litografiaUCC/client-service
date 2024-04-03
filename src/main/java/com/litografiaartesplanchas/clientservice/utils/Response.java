@@ -30,6 +30,17 @@ public class Response {
 	}
 	
 	/**
+	 * The function returns a ResponseEntity with a successful status code and a response body indicating
+	 * success.
+	 * 
+	 * @return A `ResponseEntity` object with a `ResponseBody` object set to `ok` and an HTTP status of
+	 * `OK` is being returned.
+	 */
+	public static ResponseEntity<ResponseBody> ok(){
+		return generateResponseEntity(ResponseBody.ok(null), HttpStatus.OK);
+	}
+	
+	/**
 	 * The function returns a ResponseEntity with a successful status code and a response body containing
 	 * a list of data.
 	 * 
