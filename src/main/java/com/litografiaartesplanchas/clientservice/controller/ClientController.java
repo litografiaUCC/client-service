@@ -105,38 +105,25 @@ public class ClientController {
 		}
 	}
 	
+
 	/**
-	 * This Java function handles PATCH requests to deactivate an account by its ID and returns
-	 * appropriate responses based on the status returned by the service.
+	 * This Java function uses a PATCH request to deactivate an client by its ID and handles any
+	 * exceptions that occur.
 	 * 
-	 * @param id The code snippet you provided is a PATCH mapping method in a Spring application that
-	 * deactivates an account based on the provided ID. The method calls a service to update the status of
-	 * the account and returns a response based on the status code returned by the service.
-	 * @return The method is returning a ResponseEntity object with a ResponseBody containing the result
-	 * of the patchStatus operation. The response can be one of the following based on the status returned
-	 * by the service:
-	 * - 200: OK response with a null body
-	 * - 409: Conflict response with a message "Account already deactivated"
-	 * - 404: Not Found response
-	 * If an unexpected status is returned by the service,
+	 * @param id The `id` parameter in the `patchStatus` method is a path variable of type `long`. It is
+	 * used to identify the specific resource that needs to be deactivated.
+	 * @return The method `patchStatus` is returning a `ResponseEntity` object with a generic type of
+	 * `ResponseBody`. The response entity is returned based on the outcome of the `patchStatusById`
+	 * method call in the `service` class. If the method call is successful, it returns a response with a
+	 * `200 OK` status and a `null` body. If an exception occurs during the process,
 	 */
 	@PatchMapping(value = "/{id}/desactivate")
 	public ResponseEntity<ResponseBody> patchStatus(@PathVariable long id){
 		try {
-			int status = service.patchStatusById(id);
-			switch(status) {
-				case 200:
-					return Response.ok(null);
-				case 409:
-					return Response.conflict("Account already deactivated");
-				case 404:
-					return Response.notFound();
-				default:
-					throw new Exception("Unexpected status returned by service");
-			}
+			service.patchStatusById(id);
+			return Response.ok(null);
 		}catch(Exception e) {
-			System.out.println(e);
-			return Response.badRequest();
+			return ErrorHandlerResponse.handleException(e);
 		}
 	}
 }
