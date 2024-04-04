@@ -257,7 +257,7 @@ The response body will contain the following fields:
 
 ### Path: `host/api/v1/clients/update`
 
-This endpoint allows you to create a new client account.
+This endpoint allows the client to update a specific client.
 
 ### Request Body Info
 
