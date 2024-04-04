@@ -16,17 +16,24 @@ This endpoints retrieves data of all clients registered.
 
 ### Response
 
-- **`Status:`** 200, 204, 400
+- **Status:** Response will have one of this status:
+  |Code|Name|Description|
+  |----|----|-----------|
+  |**200**|OK|The request succeeded|
+  |**204**|No Content|There is no content to send for this request, but the headers may be useful|
+  |**400**|Bad Request|The server cannot or will not process the request due to something that is perceived to be a client error|
 
-- **`Content-Type:`** application/json
+- **Content-Type:** application/json
 
 ### Response Body
 
 The response body will contain the following fields:
 
-- **`status:`** The status of the request.
-- **`message:`** A message related to the request.
-- **`data:`** Additional data related to the request.
+|Name|Description|
+|----|-----------|
+|**status**|The status of the request|
+|**message**|A message related to the request|
+|**data**|Additional data related to the request|
 
 ### Example Response
 
@@ -64,17 +71,24 @@ This endpoint retrieves data for a specific client.
 
 ### Response
 
-- **`Status:`** 200, 400, 404
+- **Status:** Response will have one of this status:
+  |Code|Name|Description|
+  |----|----|-----------|
+  |**200**|OK|The request succeeded|
+  |**400**|Bad Request|The server cannot or will not process the request due to something that is perceived to be a client error|
+  |**404**|Not Found|The server cannot find the requested resource|
 
-- **`Content-Type:`** application/json
+- **Content-Type:** application/json
 
 ### Response Body
 
 The response body will contain the following fields:
 
-- **`status:`** The status of the request.
-- **`message:`** A message related to the request.
-- **`data:`** Additional data related to the request.
+|Name|Description|
+|----|-----------|
+|**status**|The status of the request|
+|**message**|A message related to the request|
+|**data**|Additional data related to the request|
 
 ### Example Response
 
@@ -112,70 +126,29 @@ This endpoint allows you to create a new client account.
 
 ### Request Body Info
 
-- **`name:`** The first name of the client.
+|Attribute|Description|Type|Required|
+|---|---|---|---|
+|**name**|The first name of the client|string|✔|
+|**lastName**|The last name of the client if is a person|string|❌|
+|**typePerson**|The type of person (e.g., individual, organization)|string|❌|
+|**email**|The email address of the client|string|✔|
+|**password**|The first name of the client|string|✔|
+|**photo**|The path of profile photo of the client|string|❌|
+|**phone**|The phone of the client|string|❌|
+|**numberDocument**|The document number of the client|string|✔|
+|**typeDocument**| The type of document with its ID|TypeDocument|✔|
+    
+#### Type Document Entity
+    
+Stucture of the type TypeDocument
+    
+|Attribute|Description|Type|Required|
+|---|---|---|---|
+|**id**|The id of the type document|int|✔|
 
-    ```json
-        "type": "string",
-        "required": true
-    ```
+### Body Example
 
-- **`lastName:`** The last name of the client if is a person.
-
-    ```json
-        "type": "string",
-        "required": false
-    ```
-
-- **`typePerson:`** The type of person (e.g., individual, organization).
-
-    ```json
-        "type": "string",
-        "required": false
-    ```
-
-- **`email:`** The email address of the client.
-
-    ```json
-        "type": "string",
-        "required": true
-    ```
-
-- **`password:`** The password for the client account.
-
-    ```json
-        "type": "string",
-        "required": true
-    ```
-
-- **`photo`:** The profile photo of the client.
-
-    ```json
-        "type": "string",
-        "required": false
-    ```
-
-- **`numberDocument:`** The document number of the client.
-
-    ```json
-        "type": "string",
-        "required": true
-    ```
-
-- `typeDocument` (object, required): The type of document with its ID.
-
-    ```json
-        "required": true,
-        "typeDocument": {
-            "id": {
-                "type": "integer",
-                "required": true
-            }
-        }
-    ```
-
-    ### Body Example
-
-    ```json
+```json
     {
         "name": "String",
         "lastName": null,
@@ -189,21 +162,29 @@ This endpoint allows you to create a new client account.
             "id": 1
         }
     }
-    ```
+```
 
 ### Response
 
-- **`Status:`** 200, 400, 404, 409
+- **`Status`** Response will have one of this status:
+  |Code|Name|Description|
+  |----|----|-----------|
+  |**200**|OK|The request succeeded|
+  |**400**|Bad Request|The server cannot or will not process the request due to something that is perceived to be a client error|
+  |**409**|Conflict|This response is sent when a request conflicts with the current state of the server|
 
-- **`Content-Type:`** application/json
+- **Content-Type:** application/json
 
 ### Response Body
 
 The response body will contain the following fields:
 
-- **`status:`** The status of the request.
-- **`message:`** A message related to the request.
-- **`data:`** Additional data related to the request.
+|Name|Description|
+|----|-----------|
+|**status**|The status of the request|
+|**message**|A message related to the request|
+|**data**|Additional data related to the request|
+
 
 ### Example Response
 
@@ -227,17 +208,26 @@ This HTTP PATCH request is used to deactivate a specific item by its ID. The req
 
 ### Response
 
-- **`Status:`** 200, 400, 404, 409
+- **Status:** Response will have one of this status:
+  |Code|Name|Description|
+  |----|----|-----------|
+  |**200**|OK|The request succeeded|
+  |**400**|Bad Request|The server cannot or will not process the request due to something that is perceived to be a client error|
+  |**404**|Not Found|The server cannot find the requested resource|
+  |**409**|Conflict|This response is sent when a request conflicts with the current state of the server|
 
-- **`Content-Type:`** application/json
+- **Content-Type:** application/json
 
 ### Response Body
 
 The response body will contain the following fields:
 
-- **`status:`** The status of the request.
-- **`message:`** A message related to the request.
-- **`data:`** Additional data related to the request.
+|Name|Description|
+|----|-----------|
+|**status**|The status of the request|
+|**message**|A message related to the request|
+|**data**|Additional data related to the request|
+
 
 ### Example Response
 
@@ -263,24 +253,24 @@ This endpoint allows the client to update a specific client.
 
 |Attribute|Description|Type|Required|
 |---|---|---|---|
-|**id**|The id of the client|int|true|
-|**name**|The first name of the client|string|false|
-|**lastName**|The last name of the client if is a person|string|false|
-|**typePerson**|The type of person (e.g., individual, organization)|string|false|
-|**email**|The email address of the client|string|false|
-|**password**|The first name of the client|string|false|
-|**photo**|The path of profile photo of the client|string|false|
-|**phone**|The phone of the client|string|false|
-|**numberDocument**|The document number of the client|string|false|
-|**typeDocument**| The type of document with its ID|TypeDocument|false|
+|**id**|The id of the client|int|✔|
+|**name**|The first name of the client|string|❌|
+|**lastName**|The last name of the client if is a person|string|❌|
+|**typePerson**|The type of person (e.g., individual, organization)|string|❌|
+|**email**|The email address of the client|string|❌|
+|**password**|The first name of the client|string|❌|
+|**photo**|The path of profile photo of the client|string|❌|
+|**phone**|The phone of the client|string|❌|
+|**numberDocument**|The document number of the client|string|❌|
+|**typeDocument**| The type of document with its ID|TypeDocument|❌|
 
-### Type Document Entity
+#### Type Document Entity
 
 Stucture of the type TypeDocument
 
 |Attribute|Description|Type|Required|
 |---|---|---|---|
-|**id**|The id of the type document|int|[x]|
+|**id**|The id of the type document|int|✔|
 
 ### Body Example
 
@@ -303,17 +293,25 @@ Stucture of the type TypeDocument
 
 ### Response
 
-- **`Status:`** 200, 400, 404, 409
+- **Status:** Response will have one of this status:
+  |Code|Name|Description|
+  |----|----|-----------|
+  |**200**|OK|The request succeeded|
+  |**400**|Bad Request|The server cannot or will not process the request due to something that is perceived to be a client error|
+  |**404**|Not Found|The server cannot find the requested resource|
+  |**409**|Conflict|This response is sent when a request conflicts with the current state of the server|
 
-- **`Content-Type:`** application/json
+- **Content-Type:** application/json
 
 ### Response Body
 
 The response body will contain the following fields:
 
-- **`status:`** The status of the request.
-- **`message:`** A message related to the request.
-- **`data:`** Additional data related to the request.
+|Name|Description|
+|----|-----------|
+|**status**|The status of the request|
+|**message**|A message related to the request|
+|**data**|Additional data related to the request|
 
 ### Example Response
 
