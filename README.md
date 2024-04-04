@@ -90,8 +90,9 @@ The response body will contain the following fields:
 }
 ```
 
-## <span style="color:yellow">POST</span> Sign Up New Client: `host/api/v1/clients/signup`
+<details><summary><h3><span style="color:yellow">POST</span> Sign Up New Client</h3></summary>
 
+**Path:** `host/api/v1/clients/signup`
 This endpoint allows you to create a new client account.
 
 ### Request Body Info
@@ -198,3 +199,4 @@ The response body will contain the following fields:
     "data": null
 }
 ```
+</details>
