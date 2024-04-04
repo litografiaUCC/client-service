@@ -1,0 +1,745 @@
+{
+	"info": {
+		"_postman_id": "8537d536-0a9b-4f44-939c-3ab0594917dd",
+		"name": "Client Service Collection",
+		"description": "StartFragmentThe Client Service Collection in Postman is a comprehensive set of API endpoints and requests designed to facilitate seamless communication and interaction between clients and a service provider. This collection encapsulates various functionalities and features aimed at enhancing the client experience and optimizing service delivery.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15269557"
+	},
+	"item": [
+		{
+			"name": "Get all clients",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{version}}/{{service}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{version}}",
+						"{{service}}",
+						""
+					]
+				},
+				"description": "# Get Service Data\n\nThis endpoint retrieves data for the clients.\n\n### Response\n\n- Status: 200, 204, 400\n- Content-Type: application/json\n    \n\n#### Response Body\n\nThe response body will contain the following fields:\n\n- `status` (integer): The status of the request (0 for success).\n- `message` (text): A message related to the request.\n- `data` (object): Additional data related to the request.\n    \n\n#### Example Response\n\n``` json\n{\n    \"status\": 0,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"id\": 0,\n            \"name\": \"\",\n            \"lastName\": \"\",\n            \"typePerson\": \"\",\n            \"email\": \"\",\n            \"password\": \"\",\n            \"phone\": null,\n            \"photo\": \"\",\n            \"isActive\": true,\n            \"numberDocument\": \"\",\n            \"typeDocument\": null\n        }\n    ]\n}\n\n ```"
+			},
+			"response": [
+				{
+					"name": "Get all clients Ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/clients/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 04 Apr 2024 17:46:52 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"message\": \"ok\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Juan Sebastian\",\n            \"lastName\": \"Rios Valencia\",\n            \"typePerson\": \"Natural\",\n            \"email\": \"Juansecode@mail.com\",\n            \"password\": \"none\",\n            \"phone\": null,\n            \"photo\": \"https://avatars.githubusercontent.com/u/62673626?v=4\",\n            \"isActive\": false,\n            \"numberDocument\": \"1001\",\n            \"typeDocument\": null\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Postman\",\n            \"lastName\": \"Request\",\n            \"typePerson\": \"Juridica\",\n            \"email\": \"fake@postman.com\",\n            \"password\": \"none\",\n            \"phone\": null,\n            \"photo\": \"https://cdn.worldvectorlogo.com/logos/postman.svg\",\n            \"isActive\": false,\n            \"numberDocument\": \"1234\",\n            \"typeDocument\": null\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Postman\",\n            \"lastName\": \"Request\",\n            \"typePerson\": \"Juridica\",\n            \"email\": \"email@postman.com\",\n            \"password\": \"none\",\n            \"phone\": null,\n            \"photo\": \"https://cdn.worldvectorlogo.com/logos/postman.svg\",\n            \"isActive\": false,\n            \"numberDocument\": \"5678\",\n            \"typeDocument\": null\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Postman\",\n            \"lastName\": \"Request\",\n            \"typePerson\": \"Juridica\",\n            \"email\": \"support@postman.com\",\n            \"password\": \"none\",\n            \"phone\": null,\n            \"photo\": \"https://cdn.worldvectorlogo.com/logos/postman.svg\",\n            \"isActive\": false,\n            \"numberDocument\": \"9012\",\n            \"typeDocument\": {\n                \"id\": 1,\n                \"name\": \"Número de Identificación Tributaria\",\n                \"acronym\": \"NIT\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Client By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{version}}/{{service}}/{id}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{version}}",
+						"{{service}}",
+						"{id}"
+					]
+				},
+				"description": "# Get Service Data\n\nThis endpoint retrieves data for a specific client.\n\n### Request\n\n`GET /{{version}}/{{service}}/{id}`\n\n### Response\n\n- Status: 200, 400, 404\n- Content-Type: application/json\n    \n\n#### Response Body\n\nThe response body will contain the following fields:\n\n- `status` (integer): The status of the request (0 for success).\n- `message` (text): A message related to the request.\n    \n\n#### Example Response\n\n``` json\n{\n    \"status\": 0,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"id\": 0,\n            \"name\": \"\",\n            \"lastName\": \"\",\n            \"typePerson\": \"\",\n            \"email\": \"\",\n            \"password\": \"\",\n            \"phone\": null,\n            \"photo\": \"\",\n            \"isActive\": true,\n            \"numberDocument\": \"\",\n            \"typeDocument\": null\n        }\n    ]\n}\n\n ```"
+			},
+			"response": [
+				{
+					"name": "Get Client By Id Ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/clients/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 04 Apr 2024 18:15:13 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"message\": \"ok\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Juan Sebastian\",\n            \"lastName\": \"Rios Valencia\",\n            \"typePerson\": \"Natural\",\n            \"email\": \"Juansecode@mail.com\",\n            \"password\": \"none\",\n            \"phone\": null,\n            \"photo\": \"https://avatars.githubusercontent.com/u/62673626?v=4\",\n            \"isActive\": false,\n            \"numberDocument\": \"1001\",\n            \"typeDocument\": null\n        }\n    ]\n}"
+				},
+				{
+					"name": "Get Client By Id Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/clients/10",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"10"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 04 Apr 2024 18:19:34 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 404,\n    \"message\": \"Not Found\",\n    \"data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "SIgn Up new Client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"String\",\r\n    \"lastName\": null,\r\n    \"typePerson\": \"String\",\r\n    \"email\": \"example@mail.com\",\r\n    \"password\": \"password\",\r\n    \"phone\": \"String\", \r\n    \"photo\": null,\r\n    \"numberDocument\": \"String\",\r\n    \"typeDocument\": {\r\n        \"id\": 1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{version}}/{{service}}/signup",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{version}}",
+						"{{service}}",
+						"signup"
+					]
+				},
+				"description": "### Sign Up\n\nThis endpoint allows you to create a new client account.\n\n#### Request Body\n\n- `name` (text, required): The first name of the client.\n- `lastName` (text, optional): The last name of the client if is a person.\n- `typePerson` (text, optional): The type of person (e.g., individual, organization).\n- `email` (text, required): The email address of the client.\n- `password` (text, required): The password for the client account.\n- `photo` (file, optional): The profile photo of the client.\n- `numberDocument` (text, required): The document number of the client.\n- `typeDocument` (object, required): The type of document with its ID.\n    \n\n#### Response\n\n- Status: 200, 400, 404, 409\n- Content-Type: application/json\n    \n\n#### Response Body\n\nThe response body will contain the following fields:\n\n- `status` (integer): The status of the request (0 for success).\n- `message` (text): A message related to the request.\n- `data` (object): Additional data related to the request.\n    \n\n#### Example Response\n\n``` json\n{\n    \"status\": 200,\n    \"message\": \"ok\",\n    \"data\": null\n}\n\n ```"
+			},
+			"response": [
+				{
+					"name": "SIgn Up new Client Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Postman\",\r\n    \"lastName\": \"Request\",\r\n    \"typePerson\": \"Juridica\",\r\n    \"email\": \"support@postman.com\",\r\n    \"password\": \"none\",\r\n    \"photo\": \"https://cdn.worldvectorlogo.com/logos/postman.svg\",\r\n    \"numberDocument\": \"9012\",\r\n    \"typeDocument\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/clients/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"signup"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 04 Apr 2024 17:46:47 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"message\": \"ok\",\n    \"data\": null\n}"
+				},
+				{
+					"name": "SIgn Up new Client where email is already registered",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Postman\",\r\n    \"lastName\": \"Request\",\r\n    \"typePerson\": \"Juridica\",\r\n    \"email\": \"support@postman.com\",\r\n    \"password\": \"none\",\r\n    \"photo\": \"https://cdn.worldvectorlogo.com/logos/postman.svg\",\r\n    \"numberDocument\": \"9012\",\r\n    \"typeDocument\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/clients/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"signup"
+							]
+						}
+					},
+					"status": "Conflict",
+					"code": 409,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 04 Apr 2024 18:18:41 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 409,\n    \"message\": \"A client with this email is already registered\",\n    \"data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Deactivate Client",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{version}}/{{service}}/{id}/desactivate",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{version}}",
+						"{{service}}",
+						"{id}",
+						"desactivate"
+					]
+				},
+				"description": "This HTTP PATCH request is used to deactivate a specific item by its ID. The request should be made to the endpoint formed by concatenating the base URL, API version, service, and the ID of the item to be deactivated.\n\n### Request Parameters\n\n- No specific request parameters were provided.\n    \n\n### Response\n\n- Status: 200, 400, 404, 409\n- Content-Type: application/json\n    \n\n#### Response Body\n\nThe response body will contain the following fields:\n\n- `status` (number): Indicates the status of the deactivation process.\n- `message` (string): Provides additional information about the deactivation process.\n- `data` (null): Represents the data related to the deactivated item, which will be null in this case.\n    \n\n#### Example Response\n\n``` json\n{\n    \"status\": 200,\n    \"message\": \"ok\",\n    \"data\": null\n}\n\n ```"
+			},
+			"response": [
+				{
+					"name": "Deactivate Client Ok",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/clients/1/desactivate",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"1",
+								"desactivate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 04 Apr 2024 18:24:49 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"message\": \"ok\",\n    \"data\": null\n}"
+				},
+				{
+					"name": "Deactivate Client Already Deactivate",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/{{version}}/{{service}}/1/desactivate",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{version}}",
+								"{{service}}",
+								"1",
+								"desactivate"
+							]
+						}
+					},
+					"status": "Conflict",
+					"code": 409,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 04 Apr 2024 18:18:23 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 409,\n    \"message\": \"Account already deactivated\",\n    \"data\": null\n}"
+				},
+				{
+					"name": "Deactivate Client Not Found",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/{{version}}/{{service}}/5/desactivate",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{version}}",
+								"{{service}}",
+								"5",
+								"desactivate"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 04 Apr 2024 18:21:24 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 404,\n    \"message\": \"Not Found\",\n    \"data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Data Client",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": null,\r\n    \"lastName\": null,\r\n    \"typePerson\": null,\r\n    \"email\": null,\r\n    \"password\": null,\r\n    \"phone\": null, \r\n    \"photo\": null,\r\n    \"numberDocument\": null,\r\n    \"typeDocument\": {\r\n        \"id\": 1\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{version}}/{{service}}/update",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{version}}",
+						"{{service}}",
+						"update"
+					]
+				},
+				"description": "## Update Service\n\nThis endpoint allows the client to update a specific resource.\n\n### Request\n\n- Method: PUT\n- URL: {{base_url}}/{{version}}/{{service}}/update\n    \n\n#### Request Body\n\n- `id` (number, required): The unique identifier of the resource to be updated.\n    \n- `name` (string): The updated name of the resource.\n    \n- `lastName` (string): The updated last name of the resource.\n    \n- `typePerson` (string): The type of person for the resource.\n    \n- `email` (string): The updated email of the resource.\n    \n- `password` (string): The updated password of the resource.\n    \n- `phone` (string): The updated phone number of the resource.\n    \n- `photo` (file): The updated photo of the resource.\n    \n- `numberDocument` (string): The updated document number of the resource.\n    \n- `typeDocument.id` (number): The unique identifier of the document type.\n    \n\n### Response\n\n- Status: 200, 400, 404, 409\n    \n- Content-Type: application/json\n    \n\n#### Response Body\n\nThe response body will contain the following fields:\n\n- `status` (number): Indicates the status of the deactivation process.\n- `message` (string): Provides additional information about the deactivation process.\n- `data` (null): Represents the data related to the deactivated item, which will be null in this case.\n    \n\n#### Example Response\n\n``` json\n{\n  \"status\": 200,\n  \"message\": \"ok\",\n  \"data\": null\n}\n\n ```"
+			},
+			"response": [
+				{
+					"name": "Update Data Client Ok",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"1\",\r\n    \"name\": \"Juan Sebastian\",\r\n    \"lastName\": \"Rios Valencia\",\r\n    \"typePerson\": \"Natural\",\r\n    \"email\": \"Juansecode@mail.com\",\r\n    \"photo\": \"https://avatars.githubusercontent.com/u/62673626?v=4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/clients/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"update"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 04 Apr 2024 17:25:41 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"message\": \"ok\",\n    \"data\": null\n}"
+				},
+				{
+					"name": "Update Data Client Invalid Type Document",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"1\",\r\n    \"name\": \"Juan Sebastian\",\r\n    \"lastName\": \"Rios Valencia\",\r\n    \"typePerson\": \"Natural\",\r\n    \"email\": \"Juansecode@mail.com\",\r\n    \"photo\": \"https://avatars.githubusercontent.com/u/62673626?v=4\",\r\n    \"typeDocument\": {\r\n        \"id\": 10\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{version}}/{{service}}/update",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{version}}",
+								"{{service}}",
+								"update"
+							]
+						}
+					},
+					"status": "Conflict",
+					"code": 409,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 04 Apr 2024 18:33:28 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 409,\n    \"message\": \"Type Document invalid\",\n    \"data\": null\n}"
+				},
+				{
+					"name": "Update Data Client Not Found",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"10\",\r\n    \"name\": \"Juan Sebastian\",\r\n    \"lastName\": \"Rios Valencia\",\r\n    \"typePerson\": \"Natural\",\r\n    \"email\": \"Juansecode@mail.com\",\r\n    \"photo\": \"https://avatars.githubusercontent.com/u/62673626?v=4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{version}}/{{service}}/update",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{version}}",
+								"{{service}}",
+								"update"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 04 Apr 2024 18:39:26 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 404,\n    \"message\": \"Not Found\",\n    \"data\": null\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "port",
+			"value": "8080",
+			"type": "string"
+		},
+		{
+			"key": "base_url",
+			"value": "localhost:{{port}}/api"
+		},
+		{
+			"key": "version",
+			"value": "v1",
+			"type": "string"
+		},
+		{
+			"key": "service",
+			"value": "clients",
+			"type": "string"
+		}
+	]
+}
