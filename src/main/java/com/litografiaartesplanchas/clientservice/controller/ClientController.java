@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -96,7 +97,7 @@ public class ClientController {
 	public ResponseEntity<ResponseBody> createClient(@RequestBody Client client){
 		try{
 			service.create(client);
-			return Response.ok(null);
+			return Response.ok();
 
 		}catch(Exception e) {
 			return ErrorHandlerResponse.handleException(e);
@@ -119,7 +120,27 @@ public class ClientController {
 	public ResponseEntity<ResponseBody> patchStatus(@PathVariable long id){
 		try {
 			service.patchStatusById(id);
-			return Response.ok(null);
+			return Response.ok();
+		}catch(Exception e) {
+			return ErrorHandlerResponse.handleException(e);
+		}
+	}
+
+	/**
+	 * This Java function updates a client using a PUT request and handles any exceptions that may occur.
+	 * 
+	 * @param client The `client` parameter in the `updateClient` method is of type `Client`. It is being
+	 * passed in the request body of the PUT request to update a client entity.
+	 * @return The method is returning a `ResponseEntity` object with a generic type of `ResponseBody`. If
+	 * the update operation is successful, it returns a response with status code 200 (OK). If an
+	 * exception occurs during the update process, it returns an error response handled by the
+	 * `ErrorHandlerResponse` class.
+	 */
+	@PutMapping(value = "/update")
+	public ResponseEntity<ResponseBody> updateClient(@RequestBody Client client) {
+		try {
+			service.updateById(client);
+			return Response.ok();
 		}catch(Exception e) {
 			return ErrorHandlerResponse.handleException(e);
 		}
