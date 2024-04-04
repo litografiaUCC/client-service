@@ -261,75 +261,28 @@ This endpoint allows the client to update a specific client.
 
 ### Request Body Info
 
-- **`name:`** The id of the client.
+|Attribute|Description|Type|Required|
+|---|---|---|---|
+|**id**|The id of the client|int|true|
+|**name**|The first name of the client|string|false|
+|**lastName**|The last name of the client if is a person|string|false|
+|**typePerson**|The type of person (e.g., individual, organization)|string|false|
+|**email**|The email address of the client|string|false|
+|**password**|The first name of the client|string|false|
+|**photo**|The path of profile photo of the client|string|false|
+|**phone**|The phone of the client|string|false|
+|**numberDocument**|The document number of the client|string|false|
+|**typeDocument**| The type of document with its ID|TypeDocument|false|
 
-    ```json
-        "type": "int",
-        "required": true
-    ```
+### Type Document Entity
 
-- **`name:`** The first name of the client.
+Stucture of the type TypeDocument
 
-    ```json
-        "type": "string",
-        "required": false
-    ```
+|Attribute|Description|Type|Required|
+|---|---|---|---|
+|**id**|The id of the type document|int|[x]|
 
-- **`lastName:`** The last name of the client if is a person.
-
-    ```json
-        "type": "string",
-        "required": false
-    ```
-
-- **`typePerson:`** The type of person (e.g., individual, organization).
-
-    ```json
-        "type": "string",
-        "required": false
-    ```
-
-- **`email:`** The email address of the client.
-
-    ```json
-        "type": "string",
-        "required": false
-    ```
-
-- **`password:`** The password for the client account.
-
-    ```json
-        "type": "string",
-        "required": false
-    ```
-
-- **`photo`:** The profile photo of the client.
-
-    ```json
-        "type": "string",
-        "required": false
-    ```
-
-- **`numberDocument:`** The document number of the client.
-
-    ```json
-        "type": "string",
-        "required": false
-    ```
-
-- `typeDocument` (object, required): The type of document with its ID.
-
-    ```json
-        "required": false,
-        "typeDocument": {
-            "id": {
-                "type": "integer",
-                "required": true
-            }
-        }
-    ```
-
-    ### Body Example
+### Body Example
 
     ```json
     {
