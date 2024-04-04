@@ -80,6 +80,7 @@ public class ClientService {
 				client.setTypeDocument(type.get());
 			}
 		}
+		client.setIsActive(true);
 		repository.save(client);
 	}
 	
