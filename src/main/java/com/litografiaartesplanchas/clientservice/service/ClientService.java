@@ -57,17 +57,28 @@ public class ClientService {
 	}
 
 	/**
-	 * The `create` function in Java checks if a client with the same email or document number already
-	 * exists in the repository and throws a ConflictException if so, otherwise it saves the client.
+	 * The `create` method in Java checks for existing clients by email or document number, validates the
+	 * type of document, and saves a new client to the repository.
 	 * 
-	 * @param client The `client` parameter is an object of type `Client` that represents a client entity.
-	 * It contains information such as the client's email, document number, and other details. This method
-	 * `create` is responsible for creating a new client in the system.
+	 * @param client The `client` parameter in the `create` method represents an object of the `Client`
+	 * class. This object contains information about a client, such as their email, document number, and
+	 * type of document. The method checks if a client with the same email or document number already
+	 * exists in the repository
 	 */
 	public void create(Client client) throws ConflictException{
 		if(repository.existsByEmail(client.getEmail()) || repository.existsByNumberDocument(client.getNumberDocument())){
 			String fieldRegistered =  repository.existsByEmail(client.getEmail()) ? "email" : "document number";
 			throw new ConflictException("A client with this "+ fieldRegistered +" is already registered");
+		}
+		if(client.getTypeDocument() == null) {
+			throw new ConflictException("Type Document can't be null");
+		}else {
+			Optional<TypeDocument> type = typeDocumentRepository.findById((long) client.getTypeDocument().getId());
+			if(type.isEmpty()) {
+				throw new ConflictException("Type Document invalid");
+			}else {
+				client.setTypeDocument(type.get());
+			}
 		}
 		repository.save(client);
 	}
