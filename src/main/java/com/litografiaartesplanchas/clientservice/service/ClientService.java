@@ -1,15 +1,15 @@
 package com.litografiaartesplanchas.clientservice.service;
 
-import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.litografiaartesplanchas.clientservice.model.Client;
+import com.litografiaartesplanchas.clientservice.model.TypeDocument;
 import com.litografiaartesplanchas.clientservice.repository.IClientRepository;
+import com.litografiaartesplanchas.clientservice.repository.ITypeDocumentRepository;
 import com.litografiaartesplanchas.clientservice.utils.errors.ConflictException;
 import com.litografiaartesplanchas.clientservice.utils.errors.NotFoundException;
 
@@ -17,6 +17,8 @@ import com.litografiaartesplanchas.clientservice.utils.errors.NotFoundException;
 public class ClientService {
 	@Autowired
 	private IClientRepository repository;
+	@Autowired
+	private ITypeDocumentRepository typeDocumentRepository;
 	
 	/**
 	 * The function getAll() returns a list of all clients from the repository.
@@ -70,16 +72,34 @@ public class ClientService {
 		repository.save(client);
 	}
 	
-	
-	/* To do
-	public boolean updateById(Long id, Client updateDataClient) {
-		Optional<Client> optional = repository.findById(id);
-		if(optional.isPresent()) {
-			Client client = optional.get();
-			client.setEmail(updateDataClient.getEmail());
-			
-			return true;
+	/**
+	 * The `updateById` method updates a client entity with the provided data, handling exceptions for
+	 * client not found and conflicts with type document.
+	 * 
+	 * @param dataUpdateClient The `updateById` method you provided updates a `Client` entity in the
+	 * repository based on the data provided in the `dataUpdateClient` object. Here's a breakdown of how
+	 * the method works:
+	 */
+	public void updateById( Client dataUpdateClient) throws NotFoundException, ConflictException{
+		Optional<Client> optional = repository.findById((long) dataUpdateClient.getId());
+		if(optional.isEmpty()) throw new NotFoundException("Client not found");
+		Client client = optional.get();
+		if(dataUpdateClient.getName() != null) client.setName(dataUpdateClient.getName());
+		if(dataUpdateClient.getLastName() != null) client.setLastName(dataUpdateClient.getLastName());
+		if(dataUpdateClient.getTypePerson() != null) client.setTypePerson(dataUpdateClient.getTypePerson());
+		if(dataUpdateClient.getEmail() != null) client.setEmail(dataUpdateClient.getEmail());
+		if(dataUpdateClient.getPassword() != null) client.setPassword(dataUpdateClient.getPassword());
+		if(dataUpdateClient.getPhone() != null) client.setPhone(dataUpdateClient.getPhone());
+		if(dataUpdateClient.getPhoto() != null) client.setPhoto(dataUpdateClient.getPhoto());
+		if(dataUpdateClient.getNumberDocument() != null) client.setNumberDocument(dataUpdateClient.getNumberDocument());
+		if(dataUpdateClient.getTypeDocument() != null) {
+			Optional<TypeDocument> typeToUpdate = typeDocumentRepository.findById((long) dataUpdateClient.getTypeDocument().getId());
+			if(typeToUpdate.isEmpty()) {
+				throw new ConflictException("Type Document invalid");
+			}else {
+				client.setTypeDocument(typeToUpdate.get());
+			}
 		}
-		return false;
-	}*/
+		repository.save(client);
+	}
 }
