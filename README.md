@@ -21,10 +21,15 @@ This repository contains a microservice that offers a REST API for managing clie
 3. Run the Spring Boot Application
 
     `./mvnw spring-boot:run`
+   
+   > **Note:** Before running the service, ensure you have a MySQL database set up. You can create a new database using your preferred MySQL management tool or by running appropriate SQL commands. Don't forget to edit the application properties with the datasource configuration according to your MySQL setup.
 
-4. Access the API
+5. Access the API
 
-Once the service is up and running, you can access the API via <http://localhost:8080/>. To see the complete documentation with swagger, you can access via <http://localhost:8080/swagger-ui/index.htm>
+Once the service is up and running, you can access the API via <http://localhost:8080/>. To see the complete documentation with swagger, you can access via <http://localhost:8080/swagger-ui/index.html>
+
+
+>
 
 ## Endpoints
 
