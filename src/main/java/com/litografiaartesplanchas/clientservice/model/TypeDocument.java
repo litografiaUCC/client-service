@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "tipo_documento")
@@ -13,6 +14,7 @@ public class TypeDocument {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tipo_documento")
+    @NotBlank
     private int id;
 
     @Column(name = "nombre", nullable = false , length = 45, unique = true)

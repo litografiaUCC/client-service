@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "cliente")
@@ -17,18 +18,22 @@ public class Client {
     @Column(name = "id_cliente")
 	private int id;
 	
+	@NotBlank
 	@Column(name = "nombre", nullable = false , length = 100)
 	private String name;
 	
 	@Column(name = "apellido", nullable = true , length = 100)
 	private String lastName;
 	
+	@NotBlank
 	@Column(name = "tipo_persona", nullable = true , length = 10)
 	private String typePerson;
 	
+	@NotBlank
 	@Column(name = "correo", nullable = false , length = 255, unique = true)
 	private String email;
 	
+	@NotBlank
 	@Column(name = "contrasena", nullable = false , length = 255)
 	private String password;
 	
@@ -41,9 +46,11 @@ public class Client {
 	@Column(name = "activo", columnDefinition = "BOOLEAN DEFAULT true")
 	private boolean isActive;
 	
+	@NotBlank
 	@Column(name = "numero_documento", nullable = false , length = 45)
 	private String numberDocument;
 	
+	@NotBlank
 	@ManyToOne
 	@JoinColumn(name = "id_tipo_documento")
 	private TypeDocument typeDocument;

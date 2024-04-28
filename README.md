@@ -2,6 +2,30 @@
 
 This repository contains a microservice that offers a REST API for managing clients in a lithography company. Developed with Spring Boot, it follows best practices for microservices and RESTful API design. It provides CRUD operations to handle client information efficiently and securely.
 
+## Execute
+
+### Prerequisites
+
+- Java Development Kit (JDK) 8 or higher installed on your system.
+
+### Steps to Run the Service
+
+1. Clone the Repository
+
+    `git clone https://github.com/litografiaUCC/clients-service.git`
+
+2. Navigate to the Project Directory
+
+    `cd client-service`
+
+3. Run the Spring Boot Application
+
+    `./mvnw spring-boot:run`
+
+4. Access the API
+
+Once the service is up and running, you can access the API via <http://localhost:8080/>. To see the complete documentation with swagger, you can access via <http://localhost:8080/swagger-ui/index.htm>
+
 ## Endpoints
 
 This section provides an overview of the available endpoints and their respective functionalities within the API.
@@ -137,11 +161,11 @@ This endpoint allows you to create a new client account.
 |**phone**|The phone of the client|string|❌|
 |**numberDocument**|The document number of the client|string|✔|
 |**typeDocument**| The type of document with its ID|TypeDocument|✔|
-    
+
 #### Type Document Entity
-    
+
 Stucture of the type TypeDocument
-    
+
 |Attribute|Description|Type|Required|
 |---|---|---|---|
 |**id**|The id of the type document|int|✔|
@@ -185,7 +209,6 @@ The response body will contain the following fields:
 |**message**|A message related to the request|
 |**data**|Additional data related to the request|
 
-
 ### Example Response
 
 ```json
@@ -227,7 +250,6 @@ The response body will contain the following fields:
 |**status**|The status of the request|
 |**message**|A message related to the request|
 |**data**|Additional data related to the request|
-
 
 ### Example Response
 

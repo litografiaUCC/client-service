@@ -2,12 +2,16 @@ package com.litografiaartesplanchas.clientservice.utils;
 
 import java.util.List;
 
+import jakarta.validation.constraints.NotBlank;
+
 /**
  * The class `ResponseBody` is a generic class in Java that represents a response with status, message,
  * and optional data for different HTTP status codes.
  */
 public class ResponseBody<T> {
+	@NotBlank
 	private int status;
+	@NotBlank
 	private String message;
 	private List<T> data;
 	
