@@ -50,7 +50,7 @@ public class ClientController {
 			if(clients.isEmpty()) {
 				return Response.noContent();
 			}
-			return Response.ok(service.getAll());
+			return Response.ok(clients);
 		}catch(Exception e) {
 			return ErrorHandlerResponse.handleException(e);
 		}
