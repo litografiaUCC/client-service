@@ -26,10 +26,7 @@ This repository contains a microservice that offers a REST API for managing clie
 
 5. Access the API
 
-Once the service is up and running, you can access the API via <http://localhost:8080/>. To see the complete documentation with swagger, you can access via <http://localhost:8080/swagger-ui/index.html>
-
-
->
+    Once the service is up and running, you can access the API via <http://localhost:8080/>. To see the complete documentation with swagger, you can access via <http://localhost:8080/swagger-ui/index.html>
 
 ## Endpoints
 
