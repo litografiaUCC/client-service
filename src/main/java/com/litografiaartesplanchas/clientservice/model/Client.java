@@ -47,7 +47,7 @@ public class Client {
 	private boolean isActive;
 	
 	@NotBlank
-	@Column(name = "numero_documento", nullable = false , length = 45)
+	@Column(name = "numero_documento", nullable = false , length = 45, unique=true)
 	private String numberDocument;
 	
 	@NotBlank
